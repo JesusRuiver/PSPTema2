@@ -5,6 +5,7 @@
  */
 package carreracoches;
 
+import java.awt.Color;
 import javax.swing.DefaultListModel;
 
 /**
@@ -18,13 +19,18 @@ public class GuiCarreraCoches extends javax.swing.JFrame {
     /**
      * Creates new form Gui
      */
+    public static void main(String[] args) {
+        GuiCarreraCoches carrera = new GuiCarreraCoches();
+        carrera.setVisible(true);
+    }
+
     public GuiCarreraCoches() {
         initComponents();
-        coche1 = new Thread (new Coche(this, 1, "Coche1", 5000));
-        coche2 = new Thread (new Coche(this, 2, "Coche2", 2000));
-        coche3 = new Thread (new Coche(this, 3, "Coche3", 1000));
-        coche4 = new Thread (new Coche(this, 4, "Coche4", 3000));
-        
+        coche1 = new Thread(new Coche(this, 1, "Coche1", 5000));
+        coche2 = new Thread(new Coche(this, 2, "Coche2", 2000));
+        coche3 = new Thread(new Coche(this, 3, "Coche3", 1000));
+        coche4 = new Thread(new Coche(this, 4, "Coche4", 3000));
+
         jList1.setModel(new DefaultListModel<String>());
         jList2.setModel(new DefaultListModel<String>());
         jList3.setModel(new DefaultListModel<String>());
@@ -162,4 +168,22 @@ public class GuiCarreraCoches extends javax.swing.JFrame {
                 ((DefaultListModel) (jList4.getModel())).addElement(mensaje);
         }
     }
+
+    void estableceVencedor(int numeroCoche) {
+
+        switch (numeroCoche) {
+            case 1:
+                jList1.setBackground(Color.red);
+                break;
+            case 2:
+                jList2.setBackground(Color.red);
+                break;
+            case 3:
+                jList3.setBackground(Color.red);
+                break;
+            case 4:
+                jList4.setBackground(Color.red);
+        }
+    }
+
 }

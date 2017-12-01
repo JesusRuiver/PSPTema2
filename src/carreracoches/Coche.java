@@ -30,10 +30,11 @@ public class Coche implements Runnable {
     public void run() {
         try {
             for (int i = 0; i < 20; i++) {
-                carrera.setMensaje(numeroCoche, mensaje + " " + i);
+                carrera.setMensaje(numeroCoche,"El " +  mensaje + " completa la vuelta " + i);
 
                 Thread.sleep(tiempo);
             }
+            carrera.estableceVencedor(numeroCoche);
         } catch (InterruptedException ex) {
             Logger.getLogger(Coche.class.getName()).log(Level.SEVERE, null, ex);
         }
